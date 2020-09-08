@@ -4,8 +4,9 @@
 
 
 
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
+
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
@@ -15,21 +16,21 @@
 		<table  class="sampleTable">
 			<tr>
 				<td width="100" align="right">名前* : </td>
-				<td class="texter box" align="left"><p th:text="${name}"><input type="hidden" name="name" value= name></td>
+				<td class="texter box" align="left"><span th:text="${name}"></span><input type="hidden" name="name" value= name></td>
 				<td></td>
 
 			</tr>
 
 			<tr>
 				<td width="100" align="right">住所* : </td>
-				<td class="add box" colspan="2" align="left"><p th:text="${address}"><input type="hidden" name="address" value= address ></td>
+				<td class="add box" colspan="2" align="left"><span th:text="${address}"></span><input type="hidden" name="address" value= address ></td>
 
 
 			</tr>
 
 			<tr>
 				<td width="100" align="right">電話番号 : </td>
-				<td class="texter box" align="left"><p th:text="${tel}"></p><input type="hidden" name="tel" value=tel></td>
+				<td class="texter box" align="left"><span th:text="${tel}"></span><input type="hidden" name="tel" value=tel></td>
 				<td></td>
 
 			</tr>
