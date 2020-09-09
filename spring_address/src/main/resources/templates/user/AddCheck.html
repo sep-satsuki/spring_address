@@ -12,7 +12,7 @@
 </head>
 <body>
 	<p>住所録確認システム：住所録登録</p>
-	<form th:action="＠{user/List}" th:method="post">
+	<form th:action="＠{user/List}" th:object="${userRepository}" th:method="post">
 		<table  class="sampleTable">
 			<tr>
 				<td width="100" align="right">名前* : </td>

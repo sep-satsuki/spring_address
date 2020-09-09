@@ -22,10 +22,15 @@ public class UserController {
   @RequestMapping(value = "user/add", method = RequestMethod.GET)
 	public String add(@ModelAttribute("User") User form) {
             // 遷移先を返す
-		return "user/AddCheck";
+		return "user/add";
 	}
 
-
+  @RequestMapping(value = "user/AddCheck", method = RequestMethod.GET)
+ 	public String AddCheck(@ModelAttribute("User") User form) {
+             // 遷移先を返す
+ 		return "user/AddCheck";
+ 	}
+  
   @RequestMapping(value = "user/Edit", method = RequestMethod.GET)
 	public String Edit(Model model){
               // 空のフォームオブジェクトをModelに設定

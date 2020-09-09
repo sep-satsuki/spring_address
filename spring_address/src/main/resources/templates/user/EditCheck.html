@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -7,7 +7,7 @@
 <body>
 	<p>住所録管理システム：住所録編集</p>
 		<form th:action="＠{user/List}" th:method="post">
-		
+
 			<table  class="sampleTable">
 				<tr>
 					<input type="hidden" name="id" value=id th:text="${User.text}">
