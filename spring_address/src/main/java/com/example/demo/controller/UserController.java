@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.example.demo.dto.UserRequest;
 import com.example.demo.entity.User;
 import com.example.demo.service.UserService;
 /**
@@ -19,6 +20,16 @@ public class UserController {
   @Autowired
   UserService userService;
 
+  
+  //UserRequestのクラスを@ModelAttributeメソッドで生成
+  @ModelAttribute
+  UserRequest UserRequestForm() {
+      return new UserRequest();
+  }
+
+  
+  
+  
   @RequestMapping(value = "user/add", method = RequestMethod.GET)
 	public String add(@ModelAttribute("User") User form) {
             // 遷移先を返す
