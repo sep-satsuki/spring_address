@@ -8,37 +8,37 @@
 		<p>住所録管理システム：住所録編集</p>
 
 
-	<form th:action="＠{user/EditCheck}" th:method="post" th:object="${User}">
+	<form th:action="＠{user/EditCheck}" th:method="post" th:object="${UserRequest}">
 
 		<table  class="sampleTable">
 			<tr>
-				<input type="text" name="id" value= id th:field="*{text}">
+				<input type="text"  th:field="*{UserRequest.id}">
 				<td width="100" align="right">名前* : </td>
 
-				<td class="texter box" align="left"><input type="text" name="name" width="100" value=name th:field="*{text}"></td>
+				<td class="texter box" align="left"><input type="text" th:field="*{UserRequest.name}" width="100"  ></td>
 				<td></td>
 
 			</tr>
 
 			<tr>
 				<td width="100" align="right">住所* : </td>
-				<td class="add box" colspan="2" align="left"><input type="text" name="address"  width="200" size="48"value=address th:field="*{text}"></td>
+				<td class="add box" colspan="2" align="left"><input type="text" th:field="*{UserRequest.address}"  width="200" size="48" ></td>
 
 
 			</tr>
 
 			<tr>
 				<td width="100" align="right">電話番号 : </td>
-				<td class="texter box" align="left"><input type="tel" name="tel"  width="100" value= tel th:field="*{text}"></td>
+				<td class="texter box" align="left"><input type="text" th:field="*{UserRequest.tel}"  width="100"  ></td>
 				<td></td>
 
 			</tr>
 
 			<tr>
 				<td width="100"></td>
-				<td width="100"align="left"><input type="submit" value="確認" formaction="./EditBL">
+				<td width="100"align="left"><input type="submit" value="確認" th:formaction="＠{user/EditCheck}">
 								 </td>
-				<td width="100"><input type="submit" value="戻る" formaction="./ListBL"></td>
+				<td width="100"><input type="submit" value="戻る" th:formaction="＠{user/list}"></td>
 			</tr>
 
 

@@ -7,26 +7,26 @@
 <body>
 	<p>下記住所録を削除します。よろしいですか？</p>
 
-	<form th:action="＠{user/List}" th:method="post">
+	<form th:action="＠{user/List}" th:method="post" th:object="${UserRequest}">
 			<table  class="sampleTable">
 				<tr>
-					<input type="hidden" name="id" value=id >
+					<input type="hidden" th:field="*{UserRequest.id}" value=id >
 					<td width="100" align="left">名前　　　　：　</td>
-					<td class="texter box" align="left"><%= name %><input type="hidden" name="name" value=name ></td>
+					<td class="texter box" align="left">= name<input type="hidden" th:field="*{UserRequest.name}" value=name ></td>
 					<td></td>
 
 				</tr>
 
 				<tr>
 					<td width="100" align="left">住所　　　　：　</td>
-					<td class="add box" colspan="2" align="left"><%= address %><input type="hidden" name="address" value=address></td>
+					<td class="add box" colspan="2" align="left">= address<input type="hidden" th:field="*{UserRequest.address}" value=address></td>
 
 
 				</tr>
 
 				<tr>
 					<td width="100" align="left">電話番号　：　</td>
-					<td class="texter box" align="left"><%= tel %><input type="hidden" name="tel" value=tel></td>
+					<td class="texter box" align="left">= tel<input type="hidden" th:field="*{UserRequest.tel}" value=tel></td>
 					<td></td>
 
 				</tr>

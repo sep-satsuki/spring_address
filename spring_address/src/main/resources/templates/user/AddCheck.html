@@ -16,21 +16,21 @@
 		<table  class="sampleTable">
 			<tr>
 				<td width="100" align="right">名前* : </td>
-				<td class="texter box" align="left"><span th:text="${name}"></span><input type="hidden" name="name" value= name></td>
+				<td class="texter box" align="left"><span th:text="${name}"></span><input type="hidden" th:field="*{UserRequest.name}" value= name></td>
 				<td></td>
 
 			</tr>
 
 			<tr>
 				<td width="100" align="right">住所* : </td>
-				<td class="add box" colspan="2" align="left"><span th:text="${address}"></span><input type="hidden" name="address" value= address ></td>
+				<td class="add box" colspan="2" align="left"><span th:text="${address}"></span><input type="hidden" th:field="*{UserRequest.address}" value= address ></td>
 
 
 			</tr>
 
 			<tr>
 				<td width="100" align="right">電話番号 : </td>
-				<td class="texter box" align="left"><span th:text="${tel}"></span><input type="hidden" name="tel" value=tel></td>
+				<td class="texter box" align="left"><span th:text="${tel}"></span><input type="hidden" th:field="*{UserRequest.tel}" value=tel></td>
 				<td></td>
 
 			</tr>

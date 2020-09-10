@@ -15,7 +15,7 @@ import lombok.Data;
  */
 @Entity
 @Data
-@Table(name="user")
+@Table(name="jyusyoroku")
 public class User implements Serializable {
   /**
    * ID

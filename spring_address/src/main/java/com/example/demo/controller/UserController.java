@@ -2,6 +2,7 @@ package com.example.demo.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,29 +21,25 @@ public class UserController {
   @Autowired
   UserService userService;
 
-  
-  //UserRequestのクラスを@ModelAttributeメソッドで生成
-  @ModelAttribute
-  UserRequest UserRequestForm() {
-      return new UserRequest();
+
+  @GetMapping(value = "/user/add")
+
+  public String displayAdd(Model model) {
+
+    model.addAttribute("userRequest", new UserRequest());
+    return "user/add";
   }
 
-  
-  
-  
-  @RequestMapping(value = "user/add", method = RequestMethod.GET)
-	public String add(@ModelAttribute("User") User form) {
-            // 遷移先を返す
-		return "user/add";
-	}
 
-  @RequestMapping(value = "user/AddCheck", method = RequestMethod.GET)
+
+
+  @RequestMapping(value = "user/AddCheck", method = RequestMethod.POST)
  	public String AddCheck(@ModelAttribute("User") User form) {
              // 遷移先を返す
  		return "user/AddCheck";
  	}
-  
-  @RequestMapping(value = "user/Edit", method = RequestMethod.GET)
+
+  @RequestMapping(value = "user/Edit", method = RequestMethod.POST)
 	public String Edit(Model model){
               // 空のフォームオブジェクトをModelに設定
 		model.addAttribute("User", new User());
@@ -50,14 +47,14 @@ public class UserController {
 		return "user/Edit";
 	}
 
-  @RequestMapping(value = "user/EditCheck", method = RequestMethod.GET)
+  @RequestMapping(value = "user/EditCheck", method = RequestMethod.POST)
 	public String EditCheck(@ModelAttribute("User") User form) {
               // 遷移先を返す
 		return "user/EditCheck";
 	}
 
 
-@RequestMapping(value = "user/ｌist", method = RequestMethod.GET)
+@RequestMapping(value = "user/ｌist", method = RequestMethod.POST)
 public String Delete(Model model){
           // 空のフォームオブジェクトをModelに設定
 	model.addAttribute("User", new User());

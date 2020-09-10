@@ -37,8 +37,8 @@ public class UserService {
     User user = new User();
     user.setName(userRequest.getName());
     user.setAddress(userRequest.getAddress());
-    //user.settel(userRequest.gettel());
-    //user.setCreateDate(now);
+    user.setTel(userRequest.getTel());
+    user.setErrmsg(now);
     //user.setUpdateDate(now);
     userRepository.save(user);
   }

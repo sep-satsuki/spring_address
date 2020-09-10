@@ -11,15 +11,10 @@ import lombok.Data;
  */
 @Data
 public class UserRequest implements Serializable {
-	
-	//インスタンスの生成
-	public static void main(String[] args){
 
-		UserRequest user = new UserRequest();
 
-	}
-	
-	
+
+
   /**
    * 名前
    */
