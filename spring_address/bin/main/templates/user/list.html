@@ -20,12 +20,12 @@
       </tr>
     </thead>
     <tbody>
-        <tr th:each="user : ${userlist}" th:object="${UserRequest}">
+        <tr th:each="user : ${list}" th:object="${userRequest}" th:method="post">
             <td class="center" th:text="*{id}"></td>
             <td th:text="*{name}"></td>
             <td th:text="*{address}"></td>
             <td class="center" th:text="*{tel}"></td>
-            <td class="center"><a th:href="@{/user/Edit}">編集</a></td>
+            <td class="center" ><a th:href="@{/user/Edit}">編集</a></td>
             <td class="center"><a th:href="@{/user/Delete}">削除</a></td>
         </tr>
       </tbody>

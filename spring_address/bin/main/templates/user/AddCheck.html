@@ -12,25 +12,28 @@
 </head>
 <body>
 	<p>住所録確認システム：住所録登録</p>
-	<form th:action="@{user/List}" th:object="${UserRequest}" th:method="post">
+	<form th:action="@{user/list}" th:object="${userRequest}" th:method="post">
 		<table  class="sampleTable">
 			<tr>
 				<td width="100" align="right">名前* : </td>
-				<td class="texter box" align="left"><span th:text="${name}"></span><input type="hidden" th:field="*{UserRequest.name}" value= name></td>
+				<td th:text="*{name}"> </td>
+				<td class="texter box" align="left"><input type="hidden" th:field="*{name}"></td>
 				<td></td>
 
 			</tr>
 
 			<tr>
 				<td width="100" align="right">住所* : </td>
-				<td class="add box" colspan="2" align="left"><span th:text="${address}"></span><input type="hidden" th:field="*{UserRequest.address}" value= address ></td>
+				<td th:text="*{address}"> </td>
+				<td class="add box" colspan="2" align="left"><input type="hidden" th:field="*{address}" ></td>
 
 
 			</tr>
 
 			<tr>
 				<td width="100" align="right">電話番号 : </td>
-				<td class="texter box" align="left"><span th:text="${tel}"></span><input type="hidden" th:field="*{UserRequest.tel}" value=tel></td>
+				<td th:text="*{tel}"> </td>
+				<td class="texter box" align="left"><input type="hidden" th:field="*{tel}" ></td>
 				<td></td>
 
 			</tr>
@@ -38,9 +41,9 @@
 			<tr>
 				<td width="100"></td>
 
-				<td width="100"align="left"><input type="submit" value="登録" class="btn btn1" formaction="" ></td>
+				<td width="100"align="left"><input type="submit" value="登録" class="btn btn1" ></td>
 
-				<td width="100"><input type="submit" value="戻る" class="btn btn2" formaction="" ></td>
+				<td width="100"><input type="submit" value="戻る" class="btn btn2" onClick="history.back();" ></td>
 			</tr>
 
 

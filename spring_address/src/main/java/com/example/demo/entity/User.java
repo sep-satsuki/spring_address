@@ -1,6 +1,5 @@
 package com.example.demo.entity;
 import java.io.Serializable;
-import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -39,19 +38,31 @@ public class User implements Serializable {
    */
   @Column(name="tel")
   private String tel;
+
+
   /**
    * カテゴリID
+   *  @Column(name="categoryid")
+  private String categoryid;
    */
-  @Column(name="categoryid")
-  private Date categoryid;
+
+
+  /**
+   * 削除フラグ
+   *@Column(name="delete_flg")
+  private Date delete_flg;
+
+   */
+
+
+
   /**
    * エラーメッセージ
-   */
-  @Column(name="errmsg")
+   *
+   * @Column(name="errmsg")
   private Date errmsg;
-  /**
-   * 削除日時
    */
-  @Column(name="delete_date")
-  private Date deleteDate;
+
+
+
 }

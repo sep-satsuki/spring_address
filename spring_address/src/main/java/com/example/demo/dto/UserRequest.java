@@ -2,6 +2,7 @@ package com.example.demo.dto;
 import java.io.Serializable;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
@@ -12,7 +13,11 @@ import lombok.Data;
 @Data
 public class UserRequest implements Serializable {
 
-
+	 /**
+	   * ユーザーID
+	   */
+	@NotNull
+	  private Long id;
 
 
   /**
@@ -32,4 +37,3 @@ public class UserRequest implements Serializable {
   @Pattern(regexp = "0\\d{1,4}-\\d{1,4}-\\d{4}", message = "電話番号の形式で入力してください")
   private String tel;
 }
-

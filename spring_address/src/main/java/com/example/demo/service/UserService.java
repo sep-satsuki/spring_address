@@ -38,8 +38,28 @@ public class UserService {
     user.setName(userRequest.getName());
     user.setAddress(userRequest.getAddress());
     user.setTel(userRequest.getTel());
-    user.setErrmsg(now);
-    //user.setUpdateDate(now);
+    //user.setErrmsg(now);
     userRepository.save(user);
+  }
+
+  /**
+   * ユーザー情報 主キー検索
+   * @return 検索結果
+   */
+  public User findById(Long id) {
+      return userRepository.findById(id).get();
+  }
+
+
+  /**
+   * ユーザー情報 更新
+   * @param user ユーザー情報
+   */
+  public void update(UserRequest userRequest) {
+      User user = findById(userRequest.getId());
+      user.setAddress(userRequest.getAddress());
+      user.setName(userRequest.getName());
+      user.setTel(userRequest.getTel());
+      userRepository.save(user);
   }
 }
