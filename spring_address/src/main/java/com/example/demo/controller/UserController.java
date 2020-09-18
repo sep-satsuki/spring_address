@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -18,16 +21,54 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.example.demo.dto.UserRequest;
 import com.example.demo.entity.User;
 import com.example.demo.service.UserService;
+import com.example.demo.wrapper.PageWrapper;
 /**
  * ユーザー情報 Controller
  */
 @Controller
+
+
 public class UserController {
+
+	 @Autowired
+	    private UserService userService;
+
+//ページング
+	 @RequestMapping("/user/list")
+	    public String wordRegister(Pageable  pageble) {
+	        userService.getAllUser(pageble);
+	        return "/user/list";
+	    }
+
+	    @RequestMapping(value="/user/userlist", method=RequestMethod.GET)
+	    public String getUserList(Model model, Pageable pageable) {
+	        Page<User> userPage = userService.getAllUser(pageable);
+	        PageWrapper<User> page = new PageWrapper<User>(userPage, "/user/userlist");
+	        model.addAttribute("page", page);
+	        model.addAttribute("users", page.getContent());
+
+	        return "/user/userlist";
+	    }
+
+
+//最大件数設定
+	    @GetMapping
+	    public String list(@PageableDefault(page = 0, size = 10) Pageable pageable, Model model) {
+
+	        Page<User> userPage =userService.getAllUser(pageable);
+	        PageWrapper<User> page = new PageWrapper<User>(userPage, "/user/list");
+	        model.addAttribute("page", userPage);
+	        model.addAttribute("users", userPage.getContent());
+
+
+	        return "user/list";
+	    }
+
+
   /**
    * ユーザー情報 Service
    */
-  @Autowired
-  private UserService userService;
+
 
   /**
    * ユーザー情報一覧画面を表示
@@ -80,7 +121,6 @@ public class UserController {
            // 遷移先を返す
 		return "user/list";
 	}
-
 
 
 
@@ -147,3 +187,5 @@ public String Delete(Model model){
 
 
 }
+
+

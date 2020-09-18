@@ -5,6 +5,8 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.dto.UserRequest;
@@ -14,20 +16,28 @@ import com.example.demo.repository.UserRepository;
  * ユーザー情報 Service
  */
 @Service
-@Transactional(rollbackOn = Exception.class)
 public class UserService {
-  /**
-   * ユーザー情報 Repository
-   */
-  @Autowired
-  private UserRepository userRepository;
-  /**
-   * ユーザー情報 全検索
-   * @return 検索結果
-   */
-  public List<User> searchAll() {
-    return userRepository.findAll();
-  }
+
+    @Autowired
+    private UserRepository userRepository;
+
+    public Page<User> getAllUser(Pageable pageable) {
+        return userRepository.findAll(pageable);
+    }
+
+     /**
+     * ユーザー情報 全検索
+     * @return 検索結果
+     */
+     public List<User> searchAll() {
+     return userRepository.findAll();
+ }
+
+
+
+
+@Transactional(rollbackOn = Exception.class)
+
   /**
    * ユーザー情報 新規登録
    * @param user ユーザー情報

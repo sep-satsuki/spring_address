@@ -12,10 +12,19 @@ import lombok.Data;
 /**
  * ユーザー情報 Entity
  */
+
+
+
+
 @Entity
 @Data
+
 @Table(name="jyusyoroku")
 public class User implements Serializable {
+
+	private static final long serialVersionUID = -870708489937857961L;
+
+
   /**
    * ID
    */
@@ -66,3 +75,6 @@ public class User implements Serializable {
 
 
 }
+
+
+
