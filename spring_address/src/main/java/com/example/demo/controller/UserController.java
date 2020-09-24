@@ -33,55 +33,44 @@ public class UserController {
 	 @Autowired
 	    private UserService userService;
 
-//ページング
-	 @RequestMapping("/user/list")
-	    public String wordRegister(Pageable  pageble) {
-	        userService.getAllUser(pageble);
-	        return "/user/list";
-	    }
+	  /**
+	   * ユーザー情報一覧画面を表示
+	   * @param model Model
+	   * @return ユーザー情報一覧画面
+	   */
+	  @GetMapping(value = "/user/list")
 
-	    @RequestMapping(value="/user/userlist", method=RequestMethod.GET)
+	  public String displayList(Model model) {
+		  List<User> userlist = userService.searchAll();
+	    model.addAttribute("userlist", userlist);
+	    return "user/list";
+	  }
+
+
+
+//ページング処理
+	   //@RequestMapping(value="/user/list", method=RequestMethod.GET)
 	    public String getUserList(Model model, Pageable pageable) {
 	        Page<User> userPage = userService.getAllUser(pageable);
 	        PageWrapper<User> page = new PageWrapper<User>(userPage, "/user/userlist");
 	        model.addAttribute("page", page);
 	        model.addAttribute("users", page.getContent());
 
-	        return "/user/userlist";
+	        return "/user/list";
 	    }
 
 
 //最大件数設定
 	    @GetMapping
-	    public String list(@PageableDefault(page = 0, size = 10) Pageable pageable, Model model) {
+	    public void list (@PageableDefault(page = 0, size = 10) Pageable pageable, Model model) {
 
 	        Page<User> userPage =userService.getAllUser(pageable);
 	        PageWrapper<User> page = new PageWrapper<User>(userPage, "/user/list");
 	        model.addAttribute("page", userPage);
 	        model.addAttribute("users", userPage.getContent());
 
-
-	        return "user/list";
 	    }
 
-
-  /**
-   * ユーザー情報 Service
-   */
-
-
-  /**
-   * ユーザー情報一覧画面を表示
-   * @param model Model
-   * @return ユーザー情報一覧画面
-   */
-  @GetMapping(value = "/user/list")
-
-  public String displayList(Model model) {
-	  List<User> userlist = userService.searchAll();
-    model.addAttribute("userlist", userlist);
-    return "user/list";
-  }
 
 
   /**
@@ -115,7 +104,7 @@ public class UserController {
     return "redirect:/user/list";
   }
 
-  @RequestMapping(value = "user/list", method = RequestMethod.POST)
+  //@RequestMapping(value = "user/list", method = RequestMethod.POST)
 	public String list(@ModelAttribute UserRequest userRequest,Model model) {
 	    model.addAttribute("userRequest",userRequest);
            // 遷移先を返す
