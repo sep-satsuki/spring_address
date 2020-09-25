@@ -8,6 +8,8 @@
   <body>
     <h1>住所録管理システム：住所録一覧</h1>
     <div><a th:href="@{/user/add}">新規登録</a></div>
+
+
   <table border=1>
     <thead>
       <tr>
@@ -19,27 +21,34 @@
         <th></th>
       </tr>
     </thead>
-    <tbody>
-        <tr th:each="userRequest : ${userlist}" th:object="${userRequest}" th:method="post">
-            <td class="center" th:text="*{id}"></td>
-            <td th:text="*{name}"></td>
-            <td th:text="*{address}"></td>
-            <td class="center" th:text="*{tel}"></td>
-            <td class="center" ><a th:href="@{/user/Edit}">編集</a></td>
-            <td class="center"><a th:href="@{/user/Delete}">削除</a></td>
+
+<tbody>
+
+        <tr  th:each="userRequest : ${userlist}"  th:object="${userRequest}" th:method="post" >
+	            <td class="center" th:text="*{id}"></td>
+	            <td th:text="*{name}"></td>
+	            <td th:text="*{address}"></td>
+	            <td class="center" th:text="*{tel}"></td>
+	            <td class="center" ><a th:href="@{/user/{id}(id=*{id})}">編集</a></td>
+
+	            <td class="center"><a th:href="@{/user/{id}(id=*{id})}">削除</a></td>
         </tr>
+
       </tbody>
+
   </table>
+
+
 <!-- ページング処理 -->
 <div th:fragment='paginationbar'>
             <ul class='pagination pagination-centered'>
                 <li th:class="${page.firstPage}?'disabled':''" style="display:inline">
-                    <span th:if='${page.firstPage}'>←先頭</span>
-                    <a th:if='${not page.firstPage}' th:href='@{${page.url}(page=0,size=${page.size})}'>←先頭</a>
+                    <span th:if='${page.firstPage}'>&lt;&lt;</span>
+                    <a th:if='${not page.firstPage}' th:href='@{${page.url}(page=0,size=${page.size})}'>&lt;&lt;</a>
                 </li>
                 <li th:class="${page.hasPreviousPage}? '' : 'disabled'" style="display:inline">
-                    <span th:if='${not page.hasPreviousPage}'>«</span>
-                    <a th:if='${page.hasPreviousPage}' th:href='@{${page.url}(page=${page.number-2},size=${page.size})}'>«</a>
+                    <span th:if='${not page.hasPreviousPage}'>&lt;</span>
+                    <a th:if='${page.hasPreviousPage}' th:href='@{${page.url}(page=${page.number-2},size=${page.size})}'>&lt;</a>
                 </li>
 
 
@@ -50,12 +59,12 @@
                     </a>
                 </li>
                 <li th:class="${page.hasNextPage}? '' : 'disabled'" style="display:inline">
-                    <span th:if='${not page.hasNextPage}'>»</span>
-                    <a th:if='${page.hasNextPage}' th:href='@{${page.url}(page=${page.number},size=${page.size})}'>»</a>
+                    <span th:if='${not page.hasNextPage}'>&gt;</span>
+                    <a th:if='${page.hasNextPage}' th:href='@{${page.url}(page=${page.number},size=${page.size})}'>&gt;</a>
                 </li>
                 <li th:class="${page.lastPage}? 'disabled' : ''" style="display:inline">
-                    <span th:if='${page.lastPage}'>末尾➝</span>
-                    <a th:if='${not page.lastPage}' th:href='@{${page.url}(page=${page.totalPages - 1},size=${page.size})}'>末尾➝</a>
+                    <span th:if='${page.lastPage}'>&gt;&gt;</span>
+                    <a th:if='${not page.lastPage}' th:href='@{${page.url}(page=${page.totalPages - 1},size=${page.size})}'>&gt;&gt;</a>
                 </li>
             </ul>
         </div>

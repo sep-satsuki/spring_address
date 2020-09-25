@@ -12,7 +12,7 @@
 </head>
 <body>
 	<p>住所録確認システム：住所録登録</p>
-	<form th:action="@{user/list}" th:object="${userRequest}" th:method="post">
+	<form th:action="@{/user/create}" th:object="${userRequest}" th:method="post">
 		<table  class="sampleTable">
 			<tr>
 				<td width="100" align="right">名前* : </td>
@@ -43,7 +43,7 @@
 
 				<td width="100"align="left"><input type="submit" value="登録" class="btn btn1" ></td>
 
-				<td width="100"><input type="submit" value="戻る" class="btn btn2" onClick="history.back();" ></td>
+				<td width="100"><input type="button" value="戻る" class="btn btn2" onclick="history.back();" /></td>
 			</tr>
 
 

@@ -13,23 +13,22 @@
   </table>
     <h1>住所録管理システム：住所録登録</h1>
     <form th:action="@{/user/AddCheck}" th:object="${userRequest}" th:method="post">
-        <div><a th:href="@{/user/list}">キャンセル</a></div>
+
     <table>
       <tr>
         <th class="cell_title">名前* : </th>
-        <td><input type="text" th:field="*{name}"></td>
+        <td><input type="text" th:field="*{name}" width="100" class="form"></td>
       </tr>
       <tr>
         <th class="cell_title">住所* : </th>
-        <td><input type="text" th:field="*{address}"></td>
+        <td><input type="text" th:field="*{address}" width="200" class="address_form"></td>
       </tr>
       <tr>
         <th class="cell_title">電話番号* : </th>
-        <td><input type="text" th:field="*{tel}"></td>
+        <td><input type="text" th:field="*{tel}" width="100" class="form"></td>
       </tr>
     </table>
-    <div class="btn_area_center"><input type="submit" value="確認" class="btn"></div>
-    <div class="btn_area_center"><input type="submit" value="戻る" class="btn" onclick="func1()"></div>
+    <div class="btn_area_center"><input type="submit" value="確認" class="btn btn1"><input type="button" value="戻る" class="btn btn2" onclick="history.back();" /></div>
   </form>
   </body>
 </html>

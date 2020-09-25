@@ -12,8 +12,8 @@
     </tr>
   </table>
     <h1>住所録管理システム：住所録編集</h1>
-    <form th:action="@{/user/EditCheck}" th:object="${userUpdateRequest}" th:method="post">
-        <a th:href="@{/user/{id}(id=*{id})}">キャンセル</a>
+    <form th:action="@{/user/EditCheck}" th:object="${userRequest}" th:method="post">
+
         <input type="hidden" th:field="*{id}" />
         <table>
             <tr>
@@ -32,8 +32,7 @@
                 <td><input type="text" th:field="*{tel}"></td>
             </tr>
         </table>
-        <div class="btn_area_center"><input type="submit" value="確認" class="btn"></div>
-        <div class="btn_area_center"><input type="submit" value="戻る" class="btn" onclick="func1()"></div>
+        <div class="btn_area_center"><input type="submit" value="確認" class="btn"><input type="button" value="戻る" class="btn" onclick="history.back();"></div>
     </form>
   </body>
 </html>

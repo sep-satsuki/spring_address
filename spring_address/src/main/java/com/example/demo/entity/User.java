@@ -67,10 +67,12 @@ public class User implements Serializable {
 
   /**
    * エラーメッセージ
-   *
-   * @Column(name="errmsg")
+   *  @Column(name="errmsg")
   private Date errmsg;
    */
+
+ 
+
 
 
 
