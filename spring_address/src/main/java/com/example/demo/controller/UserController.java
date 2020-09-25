@@ -38,6 +38,7 @@ public class UserController {
 	   * @param model Model
 	   * @return ユーザー情報一覧画面
 	   */
+	 /*
 	  @GetMapping(value = "/user/list")
 
 	  public String displayList(Model model) {
@@ -45,16 +46,16 @@ public class UserController {
 	    model.addAttribute("userlist", userlist);
 	    return "user/list";
 	  }
-
+*/
 
 
 //ページング処理
-	   //@RequestMapping(value="/user/list", method=RequestMethod.GET)
+	   @RequestMapping(value="/user/list", method=RequestMethod.GET)
 	    public String getUserList(Model model, Pageable pageable) {
 	        Page<User> userPage = userService.getAllUser(pageable);
-	        PageWrapper<User> page = new PageWrapper<User>(userPage, "/user/userlist");
+	        PageWrapper<User> page = new PageWrapper<User>(userPage, "/user/list");
 	        model.addAttribute("page", page);
-	        model.addAttribute("users", page.getContent());
+	        model.addAttribute("userlist", page.getContent());
 
 	        return "/user/list";
 	    }
@@ -105,11 +106,11 @@ public class UserController {
   }
 
   //@RequestMapping(value = "user/list", method = RequestMethod.POST)
-	public String list(@ModelAttribute UserRequest userRequest,Model model) {
-	    model.addAttribute("userRequest",userRequest);
-           // 遷移先を返す
-		return "user/list";
-	}
+//	public String list(@ModelAttribute UserRequest userRequest,Model model) {
+//	    model.addAttribute("userRequest",userRequest);
+//           // 遷移先を返す
+//		return "user/list";
+//	}
 
 
 
