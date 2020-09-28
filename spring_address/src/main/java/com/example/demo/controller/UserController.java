@@ -55,35 +55,6 @@ public class UserController {
     return "user/add";
   }
 
-  /**
-   * ユーザー新規登録
-   * @param userRequest リクエストデータ
-   * @param model Model
-   * @return ユーザー情報一覧画面
-   */
-  /**
-  @RequestMapping(value = "/user/AddCheck", method = RequestMethod.POST)
-  public String AddCheck(@Validated @ModelAttribute UserRequest userRequest, BindingResult result, Model model) {
-    if (result.hasErrors()) {
-      List<String> errorList = new ArrayList<String>();
-      for (ObjectError error : result.getAllErrors()) {
-        errorList.add(error.getDefaultMessage());
-      }
-      model.addAttribute("userRequest",userRequest);
-      return "user/add";
-    }
-    // ユーザー情報の登録
-    userService.AddCheck(userRequest);
-    return "redirect:/user/AddCheck";
-  }
- */
-  //@RequestMapping(value = "user/list", method = RequestMethod.POST)
-//	public String list(@ModelAttribute UserRequest userRequest,Model model) {
-//	    model.addAttribute("userRequest",userRequest);
-//           // 遷移先を返す
-//		return "user/list";
-//	}
-
 
 //登録画面から確認画面への遷移
   @RequestMapping(value = "user/AddCheck", method = RequestMethod.POST)
@@ -97,9 +68,9 @@ public class UserController {
   public String create(@ModelAttribute UserRequest userRequest,Model model) {
 	  userService.create(userRequest);
 	    return "redirect:/user/list";
-
   }
 
+//編集画面への画面遷移
   @GetMapping("/user/{id}")
   public String displayView(@PathVariable Long id, Model model) {
     User user = userService.findById(id);
@@ -107,9 +78,19 @@ public class UserController {
     return "user/Edit";
   }
 
+//編集画面から編集確認画面への遷移
+  @RequestMapping(value = "user/EditCheck", method = RequestMethod.POST)
+	public String EditCheck(@ModelAttribute UserRequest userRequest,Model model) {
+	    model.addAttribute("userRequest",userRequest);
+ 		return "user/EditCheck";
+ 	}
 
-
-
+  //編集情報の登録
+  @RequestMapping(value = "user/update", method = RequestMethod.POST)
+    public String update(@ModelAttribute UserRequest userRequest,Model model) {
+	 userService.update(userRequest);
+	    return "redirect:/user/list";
+  }
 
 
   /**
@@ -154,11 +135,11 @@ public class UserController {
   }
 
 */
-  @RequestMapping(value = "user/EditCheck", method = RequestMethod.POST)
-	public String EditCheck(@ModelAttribute("User") User form) {
+//  @RequestMapping(value = "user/EditCheck", method = RequestMethod.POST)
+//	public String EditCheck(@ModelAttribute("User") User form) {
               // 遷移先を返す
-		return "user/EditCheck";
-	}
+//		return "user/EditCheck";
+//	}
 
 
 @RequestMapping(value = "user/Delete", method = RequestMethod.POST)

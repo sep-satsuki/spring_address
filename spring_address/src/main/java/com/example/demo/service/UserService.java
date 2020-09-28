@@ -66,10 +66,12 @@ public class UserService {
    * @param user ユーザー情報
    */
   public void update(UserRequest userRequest) {
-      User user = findById(userRequest.getId());
-      user.setAddress(userRequest.getAddress());
+	  User user = findById(userRequest.getId());
+
       user.setName(userRequest.getName());
+      user.setAddress(userRequest.getAddress());
       user.setTel(userRequest.getTel());
       userRepository.save(user);
   }
+
 }
