@@ -90,7 +90,6 @@ public class UserService {
   * @return 検索結果
   */
   public Page<User> findSearch(String address, Pageable pageable) {
-	  System.out.println(address);
   return userRepository.findSearch(address,pageable);
 }
 

@@ -6,15 +6,21 @@
     <meta charset="utf-8" />
   </head>
   <body>
-    <h1>住所録管理システム：住所録一覧</h1>
-    <div><a th:href="@{/user/add}">新規登録</a></div>
+  	<div>
+    	<h1>住所録管理システム：住所録一覧</h1>
+    	<div><a th:href="@{/user/add}">新規登録</a></div>
+    </div>
+	<div class="searchbox">
+    	<form th:action="@{/user/searcher}"  th:method="post">
 
-    <form th:action="@{/user/searcher}"  th:method="post">
-    	<input type="text" name="address">
-    	<input type="submit" value="検索" >
-    </form>
+			住所 : <input type="text" name="address" style="width: 144px;"  >
+			<input type="submit" value="検索" style="width: 150px;"  >
 
 
+	 	</form>
+	</div>
+
+	<div>
   <table border=1>
     <thead>
       <tr>
@@ -75,5 +81,6 @@
         </div>
 
      <div><a th:href="@{/user/add}">新規登録</a></div>
+     </div>
   </body>
 </html>

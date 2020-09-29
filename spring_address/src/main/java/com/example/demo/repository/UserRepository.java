@@ -15,7 +15,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
 	public Page<User> findAll(Pageable pageable);
 	//@Query("SELECT u FROM User u WHERE u.address Like %:name %")
-	@Query(value = "SELECT * FROM jyusyoroku u WHERE u.address Like '%:name%'", nativeQuery=true)
+	@Query(value = "SELECT * FROM jyusyoroku u WHERE u.address Like %:name%", nativeQuery=true)
 	public Page<User> findSearch(@Param("name") String userName, Pageable pageable);
 
 
