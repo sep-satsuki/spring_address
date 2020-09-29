@@ -1,55 +1,49 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
+<link href="/css/add.css" rel="stylesheet"></link>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>編集確認画面</title>
 </head>
 <body>
-	<p>住所録管理システム：住所録編集</p>
+  <table>
+    <tr th:if="${validationError}" th:each="error : ${validationError}">
+        <td  th:text="${error}"></td>
+    </tr>
+  </table>
+    <h1>住所録管理システム：住所録編集確認</h1>
+
 		<form th:action="@{/user/update}" th:object="${userRequest}" th:method="post">
 
-			<table  class="sampleTable">
+		        <input type="hidden" th:field="*{id}" />
+
+			<table >
 				<tr>
-				<!--
-					<input type="hidden" value=id th:field="*{id}">
-					-->
-					<td width="100" align="right">名前* : </td>
-					<td th:text="*{name}"> </td>
-					<td class="texter box" align="left"><input type="hidden" th:field="*{name}"></td>
+
+					<th class="cell_title">名前 : </th>
+					<th class="cell_required" th:text="*{name}"> </th>
+					<th class="texter box" align="left"><input type="hidden" th:field="*{name}"></th>
 					<td></td>
 
 				</tr>
 
 				<tr>
-					<td width="100" align="right">住所* : </td>
-					<td th:text="*{address}"> </td>
-					<td class="add box" colspan="2" align="left"><input type="hidden" th:field="*{address}" ></td>
+					<th class="cell_title">住所 : </th>
+					<th class="cell_required" th:text="*{address}"> </th>
+					<th class="add box" colspan="2" align="left"><input type="hidden" th:field="*{address}" ></th>
 
 
 				</tr>
 
 				<tr>
-					<td width="100" align="right">電話番号 : </td>
-					<td th:text="*{tel}"> </td>
-					<td class="texter box" align="left"><input type="hidden" th:field="*{tel}" ></td>
-					<td></td>
+					<th class="cell_title">電話番号 : </th>
+					<th class="cell_required" th:text="*{tel}"> </th>
+					<th class="texter box" align="left"><input type="hidden" th:field="*{tel}" ></th>
 
 				</tr>
-
-				<tr>
-					<td width="100"></td>
-
-					<td width="100"align="left"><input type="submit" value="編集" ></td>
-
-					<td width="100"><input type="button" value="戻る" onclick="history.back();"></td>
-				</tr>
-
-
 			</table>
 
-
-
-
+        	<div class="btn_area_center"><input type="submit" value="編集" class="btn"><input type="button" value="戻る" onclick="history.back();" class="btn"></div>
 		</form>
 
 </body>

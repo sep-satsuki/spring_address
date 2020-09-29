@@ -71,8 +71,8 @@ public class UserController {
   }
 
 //編集画面への画面遷移
-  @GetMapping("/user/{id}")
-  public String displayView(@PathVariable Long id, Model model) {
+  @GetMapping("/user/Edit{id}")
+  public String displayEdit(@PathVariable Long id, Model model) {
     User user = userService.findById(id);
     model.addAttribute("userRequest", user);
     return "user/Edit";
@@ -93,62 +93,31 @@ public class UserController {
   }
 
 
-  /**
-   * ユーザー編集画面を表示
-   * @param id 表示するユーザーID
-   * @param model Model
-   * @return ユーザー編集画面
-   */
- // @PostMapping("/user/edit")
-  //public String displayEdit(@ModelAttribute User userRequest,Model model) {
-      //User user = userService.findById(id);
-     // UserRequest userRequest = new UserRequest();
-	  /*
-      userRequest.setId(user.getId());
-      userRequest.setName(user.getName());
-      userRequest.setTel(user.getTel());
-      userRequest.setAddress(user.getAddress());
-      */
- //     model.addAttribute("userRequest", userRequest);
- //     return "user/edit";
- // }
-  /**
-   * ユーザー更新
-   * @param userRequest リクエストデータ
-   * @param model Model
-   * @return ユーザー情報詳細画面
-   */
-  /*
-  @RequestMapping(value="/user/edit", method=RequestMethod.POST)
-  public String edit(@Validated @ModelAttribute UserRequest userRequest, BindingResult result, Model model) {
-      if (result.hasErrors()) {
-          List<String> errorList = new ArrayList<String>();
-          for(ObjectError error : result.getAllErrors()) {
-              errorList.add(error.getDefaultMessage());
-          }
-            model.addAttribute("validationError", errorList);
-            return "user/edit";
-          }
-      // ユーザー情報の更新
-      userService.update(userRequest);
-      return String.format("redirect:/user/%d", userRequest.getId());
+//削除画面への画面遷移
+  @GetMapping("/user/Delete{id}")
+  public String Delete(@PathVariable Long id, Model model) {
+    User user = userService.findById(id);
+    model.addAttribute("userRequest", user);
+    return "user/Delete";
   }
 
-*/
-//  @RequestMapping(value = "user/EditCheck", method = RequestMethod.POST)
-//	public String EditCheck(@ModelAttribute("User") User form) {
-              // 遷移先を返す
-//		return "user/EditCheck";
-//	}
+  //削除
+  @RequestMapping(value = "user/delete", method = RequestMethod.POST)
+    public String delete(@ModelAttribute UserRequest userRequest,Model model) {
+	 userService.delete(userRequest);
+	    return "redirect:/user/list";
+  }
 
+  @RequestMapping(value="/user/searcher", method=RequestMethod.POST)
+  public String Search (@PageableDefault(page = 0, size = 10) Pageable pageable, String address, Model model) {
+      Page<User> userPage = userService.findSearch(address,pageable);
+      PageWrapper<User> page = new PageWrapper<User>(userPage, "/user/list");
+      model.addAttribute("page", page);
+      model.addAttribute("userlist", page.getContent());
 
-@RequestMapping(value = "user/Delete", method = RequestMethod.POST)
-public String Delete(Model model){
-          // 空のフォームオブジェクトをModelに設定
-	model.addAttribute("userRequest", new UserRequest());
-          // 遷移先を返す
-	return "user/Delete";
-}
+      return "/user/list";
+  }
+
 
 
 }

@@ -1,6 +1,5 @@
 package com.example.demo.service;
 import java.util.Date;
-import java.util.List;
 
 import javax.transaction.Transactional;
 
@@ -28,10 +27,11 @@ public class UserService {
      /**
      * ユーザー情報 全検索
      * @return 検索結果
-     */
-     public List<User> searchAll() {
+     *     public List<User> searchAll() {
      return userRepository.findAll();
  }
+     */
+
 
 
 
@@ -48,6 +48,7 @@ public class UserService {
     user.setName(userRequest.getName());
     user.setAddress(userRequest.getAddress());
     user.setTel(userRequest.getTel());
+    user.setDelete_flg(0);
     //user.setErrmsg(now);
     userRepository.save(user);
   }
@@ -71,7 +72,27 @@ public class UserService {
       user.setName(userRequest.getName());
       user.setAddress(userRequest.getAddress());
       user.setTel(userRequest.getTel());
+      user.setDelete_flg(0);
       userRepository.save(user);
   }
+
+  /**
+   * ユーザー情報 物理削除
+   * @param id ユーザーID
+   */
+  public void delete(UserRequest userRequest) {
+      User user = findById(userRequest.getId());
+      userRepository.delete(user);
+  }
+
+  /**
+  * 検索
+  * @return 検索結果
+  */
+  public Page<User> findSearch(String address, Pageable pageable) {
+	  System.out.println(address);
+  return userRepository.findSearch(address,pageable);
+}
+
 
 }

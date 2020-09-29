@@ -9,6 +9,11 @@
     <h1>住所録管理システム：住所録一覧</h1>
     <div><a th:href="@{/user/add}">新規登録</a></div>
 
+    <form th:action="@{/user/searcher}"  th:method="post">
+    	<input type="text" name="address">
+    	<input type="submit" value="検索" >
+    </form>
+
 
   <table border=1>
     <thead>
@@ -29,9 +34,9 @@
 	            <td th:text="*{name}"></td>
 	            <td th:text="*{address}"></td>
 	            <td class="center" th:text="*{tel}"></td>
-	            <td class="center" ><a th:href="@{/user/{id}(id=*{id})}">編集</a></td>
+	            <td class="center" ><a th:href="@{/user/Edit{id}(id=*{id})}">編集</a></td>
 
-	            <td class="center"><a th:href="@{/user/{id}(id=*{id})}">削除</a></td>
+	            <td class="center"><a th:href="@{/user/Delete{id}(id=*{id})}">削除</a></td>
         </tr>
 
       </tbody>

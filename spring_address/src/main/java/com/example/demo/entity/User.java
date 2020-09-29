@@ -57,26 +57,20 @@ public class User implements Serializable {
 
 
   /**
-   * 削除フラグ
-   *@Column(name="delete_flg")
-  private Date delete_flg;
+    削除フラグ
+    */
+   @Column(name="delete_flg")
+   private int delete_flg;
+
+
+   /** エラーメッセージ
+    *   @Column(name="errmsg")
+   private String errmsg;
 
    */
-
-
-
-  /**
-   * エラーメッセージ
-   *  @Column(name="errmsg")
-  private Date errmsg;
-   */
-
- 
 
 
 
 
 }
-
-
 
