@@ -4,3 +4,14 @@
 	margin-right:100px;
 }
 
+table {
+	border-collapse: collapse;
+}
+
+
+table th, table td {
+
+	border: solid 1px black;
+}
+
+

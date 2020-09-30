@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
   <head>
     <title>ユーザー情報一覧</title>
-    <link href="/CSS/list.css" rel="stylesheet"></link>
+    <link  rel="stylesheet" href="CSS/list.css">
     <meta charset="utf-8" />
   </head>
   <body>
   	<div>
     	<h1>住所録管理システム：住所録一覧</h1>
-    	<div><a th:href="@{/user/add}">新規登録</a></div>
+    	<a th:href="@{/user/add}">新規登録</a>
     </div>
 	<div class="searchbox">
     	<form th:action="@{/user/searcher}"  th:method="post">
@@ -21,7 +21,7 @@
 	</div>
 
 	<div>
-  <table border=1>
+  <table>
     <thead>
       <tr>
         <th>NO.</th>
@@ -33,7 +33,7 @@
       </tr>
     </thead>
 
-<tbody>
+		<tbody>
 
         <tr  th:each="userRequest : ${userlist}"  th:object="${userRequest}" th:method="post" >
 	            <td class="center" th:text="*{id}"></td>
@@ -51,7 +51,7 @@
 
 
 <!-- ページング処理 -->
-<div th:fragment='paginationbar'>
+		<div th:fragment='paginationbar'>
             <ul class='pagination pagination-centered'>
                 <li th:class="${page.firstPage}?'disabled':''" style="display:inline">
                     <span th:if='${page.firstPage}'>&lt;&lt;</span>
@@ -80,7 +80,7 @@
             </ul>
         </div>
 
-     <div><a th:href="@{/user/add}">新規登録</a></div>
+     <a th:href="@{/user/add}">新規登録</a>
      </div>
   </body>
 </html>
