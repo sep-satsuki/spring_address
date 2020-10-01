@@ -1,11 +1,17 @@
 package com.example.demo.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -56,12 +62,18 @@ public class UserController {
   }
 
 
-//登録画面から確認画面への遷移
-  @RequestMapping(value = "user/AddCheck", method = RequestMethod.POST)
-	public String AddCheck(@ModelAttribute UserRequest userRequest,Model model) {
-	    model.addAttribute("userRequest",userRequest);
- 		return "user/AddCheck";
- 	}
+  @RequestMapping(value="/user/AddCheck", method=RequestMethod.POST)
+  public String AddCheck(@Validated @ModelAttribute UserRequest userRequest, BindingResult result, Model model) {
+  if (result.hasErrors()) {
+  List<String> errorList = new ArrayList<String>();
+  for(ObjectError error : result.getAllErrors()) {
+  errorList.add(error.getDefaultMessage());
+  }
+  model.addAttribute("validationError", errorList);
+    return "user/AddCheck";
+  }
+  }
+
 
   //ユーザー情報の登録
   @RequestMapping(value = "user/create", method = RequestMethod.POST)
@@ -117,9 +129,4 @@ public class UserController {
 
       return "/user/list";
   }
-
-
-
 }
-
-

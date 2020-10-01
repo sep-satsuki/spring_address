@@ -6,12 +6,12 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-
+<link href="../CSS/addCheck.css" rel="stylesheet"></link>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>編集確認e</title>
 </head>
 <body>
-	<p>住所録確認システム：住所録登録</p>
+	<h1>住所録確認システム：住所録登録</h1>
 	<form th:action="@{/user/create}" th:object="${userRequest}" th:method="post">
 		<table  class="sampleTable">
 			<tr>

@@ -5,30 +5,29 @@ body {
 table{
     border-collapse: collapse;
   font-size: 13px;
+  margin-left:200px;
 }
 table th, table td {
     padding: 6px;
-}
-table th {
-
 }
 
 .cell_title {
   border-right: 0;
 }
-.cell_required{
-    color: red;
-    font-size: 12px;
-    width: 10px;
-    border-left: 0;
+
+
+.btn_area_center {
+  text-align:left;
 }
 .btn {
-  width: 150px;
-  	margin-left:200px;
+  width: 200px;
+  	background:#808080;
 
 }
-.btn_area_center {
-  margin-top: 20px;
+
+.btn1 {
+	margin-right:50px;
+	margin-left:290px;
 }
 
 .form {

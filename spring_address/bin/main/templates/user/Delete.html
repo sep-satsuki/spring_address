@@ -3,9 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <title>削除画面</title>
+<link  rel="stylesheet" href="../CSS/delete.css">
 </head>
 <body>
-	<p>下記住所録を削除します。よろしいですか？</p>
+	<h1>下記住所録を削除します。よろしいですか？</h1>
 	<table>
     <tr th:if="${validationError}" th:each="error : ${validationError}">
         <td style="color:red;" th:text="${error}"></td>
@@ -32,7 +33,7 @@
 				</tr>
 			</table>
 
-		<div><input type="submit" value="ＯＫ" class="btn btn1" ><input type="button" value="キャンセル" class="btn btn2" onclick="history.back();"></div>
+		<div class="button"><input type="submit" value="ＯＫ" class="btn btn1" ><input type="button" value="キャンセル" class="btn btn2" onclick="history.back();"></div>
 		</form>
 </body>
 </html>
