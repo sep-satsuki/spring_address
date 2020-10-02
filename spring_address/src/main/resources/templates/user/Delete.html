@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>削除画面</title>
@@ -13,8 +12,7 @@
 			<td style="color: red;" th:text="${error}"></td>
 		</tr>
 	</table>
-	<form th:action="@{/user/delete}" th:object="${userRequest}"
-		th:method="post">
+	<form th:action="@{/user/delete}" th:object="${userRequest}" th:method="post">
 		<input type="hidden" th:field="*{id}" />
 		<table>
 			<tr>
@@ -31,14 +29,10 @@
 				<td class="cell_title">電話番号 :</td>
 				<td class="cell_required" th:text="*{tel}"></td>
 				<td><input type="hidden" th:field="*{tel}"></td>
-
 			</tr>
 		</table>
-
 		<div class="button">
-			<input type="submit" value="ＯＫ" class="btn btn1"><input
-				type="button" value="キャンセル" class="btn btn2"
-				onclick="history.back();">
+			<input type="submit" value="ＯＫ" class="btn btn1"><input type="button" value="キャンセル" class="btn btn2" onclick="history.back();">
 		</div>
 	</form>
 </body>

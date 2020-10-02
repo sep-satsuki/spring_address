@@ -6,9 +6,7 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import lombok.Data;
-/**
- * ユーザー情報 リクエストデータ
- */
+
 @Data
 public class UserRequest implements Serializable {
 

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
 <link href="../CSS/editCheck.css" rel="stylesheet"></link>
 <meta charset="UTF-8">
@@ -14,45 +13,30 @@
 	</table>
 	<h1>住所録管理システム：住所録編集確認</h1>
 
-	<form th:action="@{/user/update}" th:object="${userRequest}"
-		th:method="post">
+	<form th:action="@{/user/update}" th:object="${userRequest}" th:method="post">
 
 		<input type="hidden" th:field="*{id}" />
-
 		<table>
 			<tr>
-
 				<th class="cell_title">名前 :</th>
 				<th class="cell_required" th:text="*{name}"></th>
-				<th class="texter box" align="left"><input type="hidden"
-					th:field="*{name}"></th>
+				<th class="texter box" align="left"><input type="hidden" th:field="*{name}"></th>
 				<td></td>
-
 			</tr>
-
 			<tr>
 				<th class="cell_title">住所 :</th>
 				<th class="cell_required" th:text="*{address}"></th>
-				<th class="add box" colspan="2" align="left"><input
-					type="hidden" th:field="*{address}"></th>
-
-
+				<th class="add box" colspan="2" align="left"><input type="hidden" th:field="*{address}"></th>
 			</tr>
-
 			<tr>
 				<th class="cell_title">電話番号 :</th>
 				<th class="cell_required" th:text="*{tel}"></th>
-				<th class="texter box" align="left"><input type="hidden"
-					th:field="*{tel}"></th>
-
+				<th class="texter box" align="left"><input type="hidden" th:field="*{tel}"></th>
 			</tr>
 		</table>
-
 		<div class="btn_area_center">
-			<input type="submit" value="編集" class="btn btn1"><input
-				type="button" value="戻る" onclick="history.back();" class="btn">
+			<input type="submit" value="編集" class="btn btn1"><input type="button" value="戻る" onclick="history.back();" class="btn">
 		</div>
 	</form>
-
 </body>
 </html>

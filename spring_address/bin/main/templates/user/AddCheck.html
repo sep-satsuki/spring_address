@@ -1,8 +1,4 @@
-
-
 <!DOCTYPE html>
-
-
 
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org">
@@ -13,54 +9,31 @@
 </head>
 <body>
 	<h1>住所録確認システム：住所録登録</h1>
-	<form th:action="@{/user/create}" th:object="${userRequest}"
-		th:method="post">
-
+	<form th:action="@{/user/create}" th:object="${userRequest}" th:method="post">
 		<table class="sampleTable">
 			<tr>
 				<td width="100" align="right">名前* :</td>
 				<td th:text="*{name}"></td>
-				<td class="texter box" align="left"><input type="hidden"
-					th:field="*{name}"></td>
+				<td class="texter box" align="left"><input type="hidden" th:field="*{name}"></td>
 				<td></td>
-
 			</tr>
-
 			<tr>
 				<td width="100" align="right">住所* :</td>
 				<td th:text="*{address}"></td>
-				<td class="add box" colspan="2" align="left"><input
-					type="hidden" th:field="*{address}"></td>
-
-
+				<td class="add box" colspan="2" align="left"><input type="hidden" th:field="*{address}"></td>
 			</tr>
-
 			<tr>
 				<td width="100" align="right">電話番号 :</td>
 				<td th:text="*{tel}"></td>
-				<td class="texter box" align="left"><input type="hidden"
-					th:field="*{tel}"></td>
+				<td class="texter box" align="left"><input type="hidden" th:field="*{tel}"></td>
 				<td></td>
 			</tr>
-
 			<tr>
 				<td width="100"></td>
-
-				<td width="100" align="left"><input type="submit" value="登録"
-					class="btn btn1"></td>
-
-				<td width="100"><input type="button" value="戻る"
-					class="btn btn2" onclick="history.back();" /></td>
+				<td width="100" align="left"><input type="submit" value="登録" class="btn btn1"></td>
+				<td width="100"><input type="button" value="戻る" class="btn btn2" onclick="history.back();" /></td>
 			</tr>
-
-
 		</table>
-
-
-
-
 	</form>
-
-
 </body>
 </html>

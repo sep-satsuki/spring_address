@@ -9,9 +9,7 @@ import org.springframework.stereotype.Service;
 import com.example.demo.dto.UserRequest;
 import com.example.demo.entity.User;
 import com.example.demo.repository.UserRepository;
-/**
- * ユーザー情報 Service
- */
+
 @Service
 public class UserService {
 
@@ -21,18 +19,6 @@ public class UserService {
 	public Page<User> getAllUser(Pageable pageable) {
 		return userRepository.findAll(pageable);
 	}
-
-	/**
-	 * ユーザー情報 全検索
-	 * @return 検索結果
-	 *     public List<User> searchAll() {
-     return userRepository.findAll();
- }
-	 */
-
-
-
-
 
 	@Transactional(rollbackOn = Exception.class)
 
@@ -51,21 +37,11 @@ public class UserService {
 		user.setTel(tel);
 		user.setDelete_flg(0);
 		userRepository.save(user);
-
-
 	}
 
-
-
-
-	/**
-	 * ユーザー情報 主キー検索
-	 * @return 検索結果
-	 */
 	public User findById(Long id) {
 		return userRepository.findById(id).get();
 	}
-
 
 	/**
 	 * ユーザー情報 更新
@@ -82,8 +58,6 @@ public class UserService {
 		user.setTel(tel);
 		user.setDelete_flg(0);
 		userRepository.save(user);
-
-
 	}
 
 	/**
