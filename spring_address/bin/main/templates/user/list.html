@@ -1,130 +1,150 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-  <head>
-    <title>ユーザー情報一覧</title>
-    <link  rel="stylesheet" href="../CSS/list.css">
-    <meta charset="utf-8" />
-  </head>
-  <body>
-  	<div>
-  	  <table>
-    <tr th:if="${validationError}" th:each="error : ${validationError}">
-      <td style="color:red;" th:text="${error}"></td>
-    </tr>
-  </table>
-    	<h1>住所録管理システム：住所録一覧</h1>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>ユーザー情報一覧</title>
+<link rel="stylesheet" href="../CSS/list.css">
+<meta charset="utf-8" />
+</head>
+<body>
+	<div>
+		<table>
+			<tr th:if="${validationError}" th:each="error : ${validationError}">
+				<td style="color: red;" th:text="${error}"></td>
+			</tr>
+		</table>
+		<h1>住所録管理システム：住所録一覧</h1>
 		<a th:href="@{/user/add}" class="new">新規登録</a>
 
-    </div>
-	<div >
-    	<form th:action="@{/user/searcher}"  th:method="post" class="Serch">
-		<ul>
-			<li>住所 : <input type="text" name="address" style="width: 144px;" ></li>
-			<li><input type="submit" value="検索" style="width: 150px;"  class="bttn"></li>
-
-		</ul>
-	 	</form>
 	</div>
-		<div class="pege">
-<!-- ページング処理 -->
+	<div>
+		<form th:action="@{/user/searcher}" th:method="post" class="Serch">
+			<ul>
+				<li>住所 : <input type="text" name="address"
+					style="width: 144px;"></li>
+				<li><input type="submit" value="検索" style="width: 150px;"
+					class="bttn"></li>
+
+			</ul>
+		</form>
+	</div>
+	<div class="pege">
+		<!-- ページング処理 -->
 		<div th:fragment='paginationbar'>
-            <ul class='pagination pagination-centered'>
-                <li th:class="${page.firstPage}?'disabled':''" style="display:inline">
-                    <span th:if='${page.firstPage}'>&lt;&lt;</span>
-                    <a th:if='${not page.firstPage}' th:href='@{${page.url}(page=0,size=${page.size})}'>&lt;&lt;</a>
-                </li>
-                <li th:class="${page.hasPreviousPage}? '' : 'disabled'" style="display:inline">
-                    <span th:if='${not page.hasPreviousPage}'>&lt;</span>
-                    <a th:if='${page.hasPreviousPage}' th:href='@{${page.url}(page=${page.number-2},size=${page.size})}'>&lt;</a>
-                </li>
+			<ul class='pagination pagination-centered'>
+				<li th:class="${page.firstPage}?'disabled':''"
+					style="display: inline"><span th:if='${page.firstPage}'>&lt;&lt;</span>
+					<a th:if='${not page.firstPage}'
+					th:href='@{${page.url}(page=0,size=${page.size})}'>&lt;&lt;</a></li>
+				<li th:class="${page.hasPreviousPage}? '' : 'disabled'"
+					style="display: inline"><span
+					th:if='${not page.hasPreviousPage}'>&lt;</span> <a
+					th:if='${page.hasPreviousPage}'
+					th:href='@{${page.url}(page=${page.number-2},size=${page.size})}'>&lt;</a>
+				</li>
 
 
-                <li th:each='item : ${page.items}' th:class="${item.current}? 'active' : ''" style="display:inline">
-                    <span th:if='${item.current}' th:text='${item.number}'>1</span>
-                    <a th:if='${not item.current}' th:href='@{${page.url}(page=${item.number-1},size=${page.size})}'>
-                    <span th:text='${item.number}'>1</span>
-                    </a>
-                </li>
-                <li th:class="${page.hasNextPage}? '' : 'disabled'" style="display:inline">
-                    <span th:if='${not page.hasNextPage}'>&gt;</span>
-                    <a th:if='${page.hasNextPage}' th:href='@{${page.url}(page=${page.number},size=${page.size})}'>&gt;</a>
-                </li>
-                <li th:class="${page.lastPage}? 'disabled' : ''" style="display:inline">
-                    <span th:if='${page.lastPage}'>&gt;&gt;</span>
-                    <a th:if='${not page.lastPage}' th:href='@{${page.url}(page=${page.totalPages - 1},size=${page.size})}'>&gt;&gt;</a>
-                </li>
-            </ul>
-        </div>
+				<li th:each='item : ${page.items}'
+					th:class="${item.current}? 'active' : ''" style="display: inline">
+					<span th:if='${item.current}' th:text='${item.number}'>1</span> <a
+					th:if='${not item.current}'
+					th:href='@{${page.url}(page=${item.number-1},size=${page.size})}'>
+						<span th:text='${item.number}'>1</span>
+				</a>
+				</li>
+				<li th:class="${page.hasNextPage}? '' : 'disabled'"
+					style="display: inline"><span th:if='${not page.hasNextPage}'>&gt;</span>
+					<a th:if='${page.hasNextPage}'
+					th:href='@{${page.url}(page=${page.number},size=${page.size})}'>&gt;</a>
+				</li>
+				<li th:class="${page.lastPage}? 'disabled' : ''"
+					style="display: inline"><span th:if='${page.lastPage}'>&gt;&gt;</span>
+					<a th:if='${not page.lastPage}'
+					th:href='@{${page.url}(page=${page.totalPages - 1},size=${page.size})}'>&gt;&gt;</a>
+				</li>
+			</ul>
+		</div>
 
 
-     </div>
+	</div>
 
-	<div >
-  <table class="tablele">
-    <thead>
-      <tr bgcolor="#4169e1">
-        <th>NO.</th>
-        <th>名前</th>
-        <th>住所</th>
-        <th>電話番号</th>
-        <th></th>
-        <th></th>
-      </tr>
-    </thead>
-
-
-
-		<tbody>
+	<div>
+		<table class="tablele">
+			<thead>
+				<tr bgcolor="#4169e1">
+					<th>NO.</th>
+					<th>名前</th>
+					<th>住所</th>
+					<th>電話番号</th>
+					<th></th>
+					<th></th>
+				</tr>
+			</thead>
 
 
-        <tr  th:each="userRequest : ${userlist}"  th:object="${userRequest}" th:method="post" >
-	            <td  th:text="*{id}"></td>
-	            <td th:text="*{name}"></td>
-	            <td th:text="*{address}"></td>
-	            <td  th:text="*{tel}"></td>
-	            <td class="center" bgcolor="#808080"><a th:href="@{/user/Edit{id}(id=*{id})}">編集</a></td>
 
-	            <td class="center" bgcolor="#808080" ><a th:href="@{/user/Delete{id}(id=*{id})}">削除</a></td>
-        </tr>
+			<tbody>
 
-      </tbody>
 
-  </table>
-  </div>
+				<tr th:each="userRequest : ${userlist}" th:object="${userRequest}"
+					th:method="post">
+					<td th:text="*{id}"></td>
+					<td th:text="*{name}"></td>
+					<td th:text="*{address}"></td>
+					<td
+						th:text="${userRequest.tel != null && userRequest.tel != '' }? ${#strings.substring(userRequest.tel,0,3)} + '-' + ${#strings.substring(userRequest.tel,3,7)} + '-' + ${#strings.substring(userRequest.tel,7,11)}: *{tel}"></td>
 
-		<div class="pege">
-<!-- ページング処理 -->
+					<td class="center" bgcolor="#808080"><a
+						th:href="@{/user/Edit{id}(id=*{id})}">編集</a></td>
+
+					<td class="center" bgcolor="#808080"><a
+						th:href="@{/user/Delete{id}(id=*{id})}">削除</a></td>
+				</tr>
+
+			</tbody>
+
+		</table>
+	</div>
+
+	<div class="pege">
+		<!-- ページング処理 -->
 		<div th:fragment='paginationbar'>
-            <ul class='pagination pagination-centered'>
-                <li th:class="${page.firstPage}?'disabled':''" style="display:inline">
-                    <span th:if='${page.firstPage}'>&lt;&lt;</span>
-                    <a th:if='${not page.firstPage}' th:href='@{${page.url}(page=0,size=${page.size})}'>&lt;&lt;</a>
-                </li>
-                <li th:class="${page.hasPreviousPage}? '' : 'disabled'" style="display:inline">
-                    <span th:if='${not page.hasPreviousPage}'>&lt;</span>
-                    <a th:if='${page.hasPreviousPage}' th:href='@{${page.url}(page=${page.number-2},size=${page.size})}'>&lt;</a>
-                </li>
+			<ul class='pagination pagination-centered'>
+				<li th:class="${page.firstPage}?'disabled':''"
+					style="display: inline"><span th:if='${page.firstPage}'>&lt;&lt;</span>
+					<a th:if='${not page.firstPage}'
+					th:href='@{${page.url}(page=0,size=${page.size})}'>&lt;&lt;</a></li>
+				<li th:class="${page.hasPreviousPage}? '' : 'disabled'"
+					style="display: inline"><span
+					th:if='${not page.hasPreviousPage}'>&lt;</span> <a
+					th:if='${page.hasPreviousPage}'
+					th:href='@{${page.url}(page=${page.number-2},size=${page.size})}'>&lt;</a>
+				</li>
 
 
-                <li th:each='item : ${page.items}' th:class="${item.current}? 'active' : ''" style="display:inline">
-                    <span th:if='${item.current}' th:text='${item.number}'>1</span>
-                    <a th:if='${not item.current}' th:href='@{${page.url}(page=${item.number-1},size=${page.size})}'>
-                    <span th:text='${item.number}'>1</span>
-                    </a>
-                </li>
-                <li th:class="${page.hasNextPage}? '' : 'disabled'" style="display:inline">
-                    <span th:if='${not page.hasNextPage}'>&gt;</span>
-                    <a th:if='${page.hasNextPage}' th:href='@{${page.url}(page=${page.number},size=${page.size})}'>&gt;</a>
-                </li>
-                <li th:class="${page.lastPage}? 'disabled' : ''" style="display:inline">
-                    <span th:if='${page.lastPage}'>&gt;&gt;</span>
-                    <a th:if='${not page.lastPage}' th:href='@{${page.url}(page=${page.totalPages - 1},size=${page.size})}'>&gt;&gt;</a>
-                </li>
-            </ul>
-        </div>
+				<li th:each='item : ${page.items}'
+					th:class="${item.current}? 'active' : ''" style="display: inline">
+					<span th:if='${item.current}' th:text='${item.number}'>1</span> <a
+					th:if='${not item.current}'
+					th:href='@{${page.url}(page=${item.number-1},size=${page.size})}'>
+						<span th:text='${item.number}'>1</span>
+				</a>
+				</li>
+				<li th:class="${page.hasNextPage}? '' : 'disabled'"
+					style="display: inline"><span th:if='${not page.hasNextPage}'>&gt;</span>
+					<a th:if='${page.hasNextPage}'
+					th:href='@{${page.url}(page=${page.number},size=${page.size})}'>&gt;</a>
+				</li>
+				<li th:class="${page.lastPage}? 'disabled' : ''"
+					style="display: inline"><span th:if='${page.lastPage}'>&gt;&gt;</span>
+					<a th:if='${not page.lastPage}'
+					th:href='@{${page.url}(page=${page.totalPages - 1},size=${page.size})}'>&gt;&gt;</a>
+				</li>
+			</ul>
+		</div>
 
 
-     </div>
-          <a th:href="@{/user/add}" class="new">新規登録</a>
-  </body>
+	</div>
+	<a th:href="@{/user/add}" class="new">新規登録</a>
+</body>
 </html>

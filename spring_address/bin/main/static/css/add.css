@@ -1,38 +1,41 @@
 @charset "UTF-8";
+
 body {
 
 }
-table{
-    border-collapse: collapse;
-  font-size: 13px;
-  margin-left:200px;
+
+table {
+	border-collapse: collapse;
+	font-size: 13px;
+	margin-left: 200px;
 }
+
 table th, table td {
-    padding: 6px;
+	padding: 6px;
 }
 
 .cell_title {
-  border-right: 0;
+	border-right: 0;
 }
-
 
 .btn_area_center {
-  text-align:left;
+	text-align: left;
 }
-.btn {
-  width: 200px;
-  	background:#808080;
 
+.btn {
+	width: 200px;
+	background: #808080;
 }
 
 .btn1 {
-	margin-right:50px;
-	margin-left:290px;
+	margin-right: 50px;
+	margin-left: 290px;
 }
 
 .form {
-	width:200px;
+	width: 200px;
 }
+
 .address_form {
-	width:400px;
+	width: 400px;
 }

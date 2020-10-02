@@ -1,19 +1,18 @@
 @charset "UTF-8";
 
-table{
-    border-collapse: collapse;
-  font-size: 13px;
-  margin-left:150px;
+table {
+	border-collapse: collapse;
+	font-size: 13px;
+	margin-left: 150px;
 }
 
-
-.btn_area_center{
-	text-align:center;
+.btn_area_center {
+	text-align: center;
 }
 
 .btn {
-	width:200px;
-	background:#808080;
+	width: 200px;
+	background: #808080;
 }
 
 .btn1 {

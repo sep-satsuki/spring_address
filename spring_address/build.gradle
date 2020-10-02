@@ -22,6 +22,9 @@ dependencies {
 	runtimeOnly 'mysql:mysql-connector-java'
 	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation 'javax.validation:validation-api:2.0.1.Final'
+	runtimeOnly 'org.hibernate.validator:hibernate-validator:6.0.17.Final'
+ 	runtimeOnly 'org.glassfish:javax.el:3.0.1-b11'
 }
 
 

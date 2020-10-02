@@ -1,39 +1,45 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>削除画面</title>
-<link  rel="stylesheet" href="../CSS/delete.css">
+<link rel="stylesheet" href="../CSS/delete.css">
 </head>
 <body>
 	<h1>下記住所録を削除します。よろしいですか？</h1>
 	<table>
-    <tr th:if="${validationError}" th:each="error : ${validationError}">
-        <td style="color:red;" th:text="${error}"></td>
-    </tr>
-</table>
-	<form th:action="@{/user/delete}" th:object="${userRequest}" th:method="post">
-        <input type="hidden" th:field="*{id}" />
-			<table>
-				<tr>
-                <td class="cell_title">名前　　　 : </td>
-                <td class="cell_required" th:text="*{name}"></td>
-                <td><input type="hidden" th:field="*{name}"></td>
-            </tr>
-            <tr>
-                <td class="cell_title">住所　　　 : </td>
-                <td class="cell_required" th:text="*{address}"></td>
-                <td><input type="hidden" th:field="*{address}"></td>
-            </tr>
-            <tr>
-                <td class="cell_title">電話番号　 : </td>
-                <td class="cell_required" th:text="*{tel}"></td>
-                <td><input type="hidden" th:field="*{tel}"></td>
+		<tr th:if="${validationError}" th:each="error : ${validationError}">
+			<td style="color: red;" th:text="${error}"></td>
+		</tr>
+	</table>
+	<form th:action="@{/user/delete}" th:object="${userRequest}"
+		th:method="post">
+		<input type="hidden" th:field="*{id}" />
+		<table>
+			<tr>
+				<td class="cell_title">名前 :</td>
+				<td class="cell_required" th:text="*{name}"></td>
+				<td><input type="hidden" th:field="*{name}"></td>
+			</tr>
+			<tr>
+				<td class="cell_title">住所 :</td>
+				<td class="cell_required" th:text="*{address}"></td>
+				<td><input type="hidden" th:field="*{address}"></td>
+			</tr>
+			<tr>
+				<td class="cell_title">電話番号 :</td>
+				<td class="cell_required" th:text="*{tel}"></td>
+				<td><input type="hidden" th:field="*{tel}"></td>
 
-				</tr>
-			</table>
+			</tr>
+		</table>
 
-		<div class="button"><input type="submit" value="ＯＫ" class="btn btn1" ><input type="button" value="キャンセル" class="btn btn2" onclick="history.back();"></div>
-		</form>
+		<div class="button">
+			<input type="submit" value="ＯＫ" class="btn btn1"><input
+				type="button" value="キャンセル" class="btn btn2"
+				onclick="history.back();">
+		</div>
+	</form>
 </body>
 </html>

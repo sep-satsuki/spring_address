@@ -1,23 +1,21 @@
 @charset "UTF-8";
 
-table{
-    border-collapse: collapse;
-  font-size: 13px;
-  margin-left:200px;
+table {
+	border-collapse: collapse;
+	font-size: 13px;
+	margin-left: 200px;
 }
 
-
-
 .button {
-  text-align:left;
+	text-align: left;
 }
 
 .btn1 {
-	margin-right:50px;
-	margin-left:280px;
+	margin-right: 50px;
+	margin-left: 280px;
 }
 
 .btn {
-	width:200px;
-	background:#808080;
+	width: 200px;
+	background: #808080;
 }

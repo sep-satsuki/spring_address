@@ -1,35 +1,41 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-  <head>
-    <title>住所録管理システム：住所録編集</title>
-    <link href="../CSS/edit.css" rel="stylesheet"></link>
-    <meta charset="utf-8" />
-  </head>
-  <body>
-  <table>
-    <tr th:if="${validationError}" th:each="error : ${validationError}">
-        <td style="color:red;" th:text="${error}"></td>
-    </tr>
-  </table>
-    <h1>住所録管理システム：住所録編集</h1>
-    <form th:action="@{/user/EditCheck}" th:object="${userRequest}" th:method="post">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>編集画面</title>
+<link href="../CSS/edit.css" rel="stylesheet"></link>
+<meta charset="utf-8" />
+</head>
+<body>
+	<table>
+		<tr th:if="${validationError}" th:each="error : ${validationError}">
+			<td style="color: red;" th:text="${error}"></td>
+		</tr>
+	</table>
+	<h1>住所録管理システム：住所録編集</h1>
+	<form th:action="@{/user/EditCheck}" th:object="${userRequest}"
+		th:method="post">
 
-        <input type="hidden" th:field="*{id}" />
-        <table>
-            <tr>
-                <th class="cell_title">名前* : </th>
-                <td><input type="text" th:field="*{name}" class="form"></td>
-            </tr>
-            <tr>
-                <th class="cell_title">住所* : </th>
-                <td><input type="text" th:field="*{address}" class="address_form"></td>
-            </tr>
-            <tr>
-                <th class="cell_title">電話番号* : </th>
-                <td><input type="text" th:field="*{tel}" class="form"></td>
-            </tr>
-        </table>
-        <div class="btn_area_center"><input type="submit" value="確認" class="btn btn1"><input type="button" value="戻る" class="btn" onclick="history.back();"></div>
-    </form>
-  </body>
+		<input type="hidden" th:field="*{id}" />
+		<table>
+			<tr>
+				<th class="cell_title">名前* :</th>
+				<td><input type="text" th:field="*{name}" class="form"></td>
+			</tr>
+			<tr>
+				<th class="cell_title">住所* :</th>
+				<td><input type="text" th:field="*{address}"
+					class="address_form"></td>
+			</tr>
+			<tr>
+				<th class="cell_title">電話番号* :</th>
+				<td><input type="text" th:field="*{tel}" class="form"></td>
+			</tr>
+		</table>
+		<div class="btn_area_center">
+			<input type="submit" value="確認" class="btn btn1"><input
+				type="button" value="戻る" class="btn" onclick="history.back();">
+		</div>
+	</form>
+</body>
 </html>

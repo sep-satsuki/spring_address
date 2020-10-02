@@ -25,51 +25,51 @@ public class User implements Serializable {
 	private static final long serialVersionUID = -870708489937857961L;
 
 
-  /**
-   * ID
-   */
-  @Id
-  @Column(name="id")
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-  private Long id;
-  /**
-   * 名前
-   */
-  @Column(name="name")
-  private String name;
-  /**
-   * 住所
-   */
-  @Column(name="address")
-  private String address;
-  /**
-   * 電話番号
-   */
-  @Column(name="tel")
-  private String tel;
+	/**
+	 * ID
+	 */
+	@Id
+	@Column(name="id")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Long id;
+	/**
+	 * 名前
+	 */
+	@Column(name="name")
+	private String name;
+	/**
+	 * 住所
+	 */
+	@Column(name="address")
+	private String address;
+	/**
+	 * 電話番号
+	 */
+	@Column(name="tel")
+	private String tel;
 
 
-  /**
-   * カテゴリID
-   *  @Column(name="categoryid")
+	/**
+	 * カテゴリID
+	 *  @Column(name="categoryid")
   private String categoryid;
-   */
+	 */
 
 
-  /**
+	/**
     削除フラグ
-    */
-   @Column(name="delete_flg")
-   private int delete_flg;
+	 */
+	@Column(name="delete_flg")
+	private int delete_flg;
 
 
-   /** エラーメッセージ
-    *
-    *  @Column(name="errmsg")
+	/** エラーメッセージ
+	 *
+	 *  @Column(name="errmsg")
    private String errmsg;
 
 
-   */
+	 */
 
 
 

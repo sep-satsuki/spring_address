@@ -1,30 +1,29 @@
 @charset "UTF-8";
 
 li {
-	display:inline;
-	list-style:none;
+	display: inline;
+	list-style: none;
 }
 
 .Serch {
-	margin-left:1100px;
-
+	margin-left: 1100px;
 }
 
 .Serch li {
-	display:list-item;
+	display: list-item;
 }
 
-.bttn{
-	width:153px;
-	margin-left:50px;
+.bttn {
+	width: 153px;
+	margin-left: 50px;
 }
 
 .new {
-	background    : #808080;
-	color         : #000000;
+	background: #808080;
+	color: #000000;
 	text-decoration: none;
-	padding       : 2px 30px 2px 30px;
-	margin-left        :550px;
+	padding: 2px 30px 2px 30px;
+	margin-left: 550px;
 	border: solid 1px #000000;
 	border-radius: 5px;
 }
@@ -32,22 +31,19 @@ li {
 table {
 	border-collapse: collapse;
 	margin-left: auto;
-    margin-right: auto;
-    width: 800px;
-
-	text-align:center;
+	margin-right: auto;
+	width: 800px;
+	text-align: center;
 }
-
 
 table th, table td {
 	border: solid 1px black;
-
 }
 
 .pege {
-	margin-left:500px;
+	margin-left: 500px;
 }
 
 .center {
-	color:#000000;
+	color: #000000;
 }
