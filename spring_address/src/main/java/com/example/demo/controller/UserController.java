@@ -61,7 +61,7 @@ public class UserController {
     return "user/add";
   }
 
-
+ //エラーチェック、登録確認画面への遷移
   @RequestMapping(value="/user/AddCheck", method=RequestMethod.POST)
   public String AddCheck(@Validated @ModelAttribute UserRequest userRequest, BindingResult result, Model model) {
   if (result.hasErrors()) {
@@ -70,8 +70,9 @@ public class UserController {
   errorList.add(error.getDefaultMessage());
   }
   model.addAttribute("validationError", errorList);
-    return "user/AddCheck";
+    return "user/add";
   }
+   return "user/AddCheck";
   }
 
 
@@ -120,6 +121,7 @@ public class UserController {
 	    return "redirect:/user/list";
   }
 
+  //検索機能
   @RequestMapping(value="/user/searcher", method=RequestMethod.POST)
   public String Search (@PageableDefault(page = 0, size = 10) Pageable pageable, String address, Model model) {
       Page<User> userPage = userService.findSearch(address,pageable);
