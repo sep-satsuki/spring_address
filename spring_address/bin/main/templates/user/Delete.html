@@ -27,7 +27,7 @@
 			</tr>
 			<tr>
 				<td class="cell_title">電話番号 :</td>
-				<td class="cell_required" th:text="*{tel}"></td>
+				<td class="cell_required" th:text="${userRequest.tel != null && userRequest.tel != '' }? ${#strings.substring(userRequest.tel,0,3)} + '-' + ${#strings.substring(userRequest.tel,3,7)} + '-' + ${#strings.substring(userRequest.tel,7,11)}: *{tel}"></td>
 				<td><input type="hidden" th:field="*{tel}"></td>
 			</tr>
 		</table>

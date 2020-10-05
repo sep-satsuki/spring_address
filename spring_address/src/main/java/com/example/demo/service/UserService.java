@@ -1,4 +1,7 @@
 package com.example.demo.service;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,6 +62,26 @@ public class UserService {
 		user.setDelete_flg(0);
 		userRepository.save(user);
 	}
+
+	/**
+	 * 編集画面のハイフンの表示
+	 *
+	 */
+	public void check(User  user) {
+
+		String tel1 = user.getTel();
+		String tel = "";
+		if (tel1.length() == 11) {
+		Pattern p = Pattern.compile("(\\d{3})(\\d{4})(\\d{4})");
+
+        Matcher abc = p.matcher(tel1);
+
+        tel = abc.replaceAll("$1-$2-$3");
+		}
+        user.setTel(tel);
+	}
+
+
 
 	/**
 	 * ユーザー情報 物理削除

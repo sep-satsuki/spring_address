@@ -79,11 +79,13 @@ public class UserController {
 		return "redirect:/user/list";
 	}
 
-	//編集画面への画面遷移
+	//編集画面への画面遷移、ハイフンの表示(check)
 	@GetMapping("/user/Edit{id}")
-	public String displayEdit(@PathVariable Long id, Model model) {
+	public String displayEdit(@PathVariable Long id,  Model model) {
 		User user = userService.findById(id);
+		userService.check(user);
 		model.addAttribute("userRequest", user);
+
 		return "user/Edit";
 	}
 
